@@ -3,8 +3,10 @@ package com.example.proyecto_pc.seccion_02;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -42,5 +44,11 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this,"Has hecho click" + names.get(position),Toast.LENGTH_LONG).show();
             }
         });
+
+        //Enlazamos con nuestro adaptador personalizado
+        MyAdapter myAdapter = new MyAdapter(this, R.layout.list_item,names);
+        listView.setAdapter(myAdapter);
+
     }
 }
+
