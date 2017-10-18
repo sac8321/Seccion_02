@@ -2,8 +2,11 @@ package com.example.proyecto_pc.seccion_02;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +14,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private ListView listView ;
-
+    private List<String> names;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         listView =(ListView) findViewById(R.id.listView);
 
         //Datos a mostrar
-        List<String> names = new ArrayList<String>();
+        names = new ArrayList<String>();
         names.add("Jorge");
         names.add("Monica");
         names.add("Andres");
@@ -33,6 +36,11 @@ public class MainActivity extends AppCompatActivity {
         //Establecemos el adaptados con nuestro List view
         listView.setAdapter(adapter);
 
-
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(MainActivity.this,"Has hecho click" + names.get(position),Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }
