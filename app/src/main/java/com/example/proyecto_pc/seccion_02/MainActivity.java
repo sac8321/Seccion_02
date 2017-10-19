@@ -31,12 +31,32 @@ public class MainActivity extends AppCompatActivity {
         names.add("Monica");
         names.add("Andres");
         names.add("Juan");
+        names.add("Jorge");
+        names.add("Monica");
+        names.add("Andres");
+        names.add("Juan");
+        names.add("Jorge");
+        names.add("Monica");
+        names.add("Andres");
+        names.add("Juan");
+        names.add("Jorge");
+        names.add("Monica");
+        names.add("Andres");
+        names.add("Juan");
+        names.add("Jorge");
+        names.add("Monica");
+        names.add("Andres");
+        names.add("Juan");
+        names.add("Jorge");
+        names.add("Monica");
+        names.add("Andres");
+        names.add("Juan");
 
         //Adaptador , la forma visual de como se muestran los datos
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,names);
+        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,names);
 
         //Establecemos el adaptados con nuestro List view
-        listView.setAdapter(adapter);
+       // listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
