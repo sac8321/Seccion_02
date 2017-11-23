@@ -46,7 +46,7 @@ public class MyAdapter extends BaseAdapter {
         if (convertView==null){
             //Inflamos la vista que ha llegado con el layout personalizado
             LayoutInflater layoutInflater = LayoutInflater.from(this.context);
-            convertView= layoutInflater.inflate(R.layout.list_item,null);
+            convertView= layoutInflater.inflate(this.layout,null);
 
             holder = new viewHolder();
             //Referenciamos el evento a modificar y lo rrenenamos
