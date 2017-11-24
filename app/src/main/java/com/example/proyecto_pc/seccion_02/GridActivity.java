@@ -2,6 +2,7 @@ package com.example.proyecto_pc.seccion_02;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -52,12 +53,12 @@ public class GridActivity extends AppCompatActivity {
          myAdapter = new MyAdapter(this, R.layout.grid_item,names);
       gridView.setAdapter(myAdapter);
 
+      registerForContextMenu(gridView);
 
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
 
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.action_bar_menu,menu);
@@ -78,6 +79,34 @@ public class GridActivity extends AppCompatActivity {
 
             default:
             return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+
+        MenuInflater inflater = getMenuInflater();
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+        menu.setHeaderTitle(this.names.get(info.position));
+        inflater.inflate(R.menu.context_menu,menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)item.getMenuInfo();
+        switch (item.getItemId()){
+            case R.id.delete_item:
+
+                this.names.remove(info.position);
+                this.myAdapter.notifyDataSetChanged();
+                return true;
+                default:
+                    return super.onContextItemSelected(item);
+
+
+
         }
 
 
